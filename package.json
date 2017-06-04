@@ -1,0 +1,23 @@
+{
+  "name": "react-image-flipper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {},
+  "scripts": {
+    "test": "./node_modules/jest/bin/jest.js"
+  },
+  "author": "Kao",
+  "license": "ISC",
+  "dependencies": {
+    "inline-style-prefixer": "^3.0.5",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.0.1",
+    "jest": "^20.0.4"
+  },
+  "homepage": "https://github.com/ckckckc/ooxx"
+}
