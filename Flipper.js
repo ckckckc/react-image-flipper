@@ -12,11 +12,14 @@ class Flipper extends Component {
       isClicked: false,
     };
 
+    const { outBound, container, flippingContainer, back, front } = this.props.flipperStyle;
+
     this.flipperStyle = prefixAll({
       outBound: {
         perspective: '500px',
         display: 'inline-block',
         cursor: 'pointer',
+        ...outBound
       },
       container: {
         OTransition: 'transform 0.6s',
@@ -31,12 +34,14 @@ class Flipper extends Component {
         MozTransitionTimingFunction: 'ease-in-out',
         WebkitTransitionTimingFunction: 'ease-in-out',
         transitionTimingFunction: 'ease-in-out',
+        ...container
       },
       flippingContainer: {
         Otransform: 'rotateY(-180deg)',
         MozTransform: 'rotateY(-180deg)',
         WebkitTransform: 'rotateY(-180deg)',
         transform: 'rotateY(-180deg)',
+        ...flippingContainer,
       },
       back: {
         position: 'absolute',
@@ -50,6 +55,7 @@ class Flipper extends Component {
         WebkitTransform: 'rotateY(0deg)',
         transform: 'rotateY(0deg)',
         zIndex: 1,
+        ...back,
       },
       front: {
         position: 'absolute',
@@ -62,8 +68,8 @@ class Flipper extends Component {
         MozTransform: 'rotateY(180deg)',
         WebkitTransform: 'rotateY(180deg)',
         transform: 'rotateY(180deg)',
+        ...front
       },
-      ...props.flipperStyle,
     });
 
     this.imageOnLoad = this.imageOnLoad.bind(this);
