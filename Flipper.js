@@ -12,7 +12,15 @@ class Flipper extends Component {
       isClicked: false,
     };
 
-    const { outBound, container, flippingContainer, back, front } = this.props.flipperStyle;
+    const flipperStyle = this.props.flipperStyle || {};
+
+    const { 
+      outBound, 
+      container, 
+      flippingContainer, 
+      back, 
+      front 
+    } = flipperStyle;
 
     this.flipperStyle = prefixAll({
       outBound: {
@@ -103,14 +111,20 @@ class Flipper extends Component {
 
   render() {
     const { isMouseIn, isClicked, width, height } = this.state;
-    const { imgSrc,  imgAlt, enableHover, enableClick, forceFlip } = this.props;
+    const { 
+      imgSrc, 
+      imgAlt = { back: '', front: '' }, 
+      enableHover = true, 
+      enableClick = true, 
+      forceFlip = null
+    } = this.props;
     const { outBound, front, back, flippingContainer } = this.flipperStyle;
     let { container } = this.flipperStyle;
 
     container = width ? { ...container, width } : container;
     container = height ? { ...container, height } : container;
 
-    if ( enableHover && typeof forceFlip === 'undefined' ) {
+    if ( enableHover && forceFlip === null ) {
       container = isMouseIn
                 ? {
                     ...container,
@@ -119,7 +133,7 @@ class Flipper extends Component {
                 : container;
     }
 
-    if ( enableClick && typeof forceFlip === 'undefined' ) {
+    if ( enableClick && forceFlip === null ) {
       container = isClicked
                 ? {
                     ...container, 
